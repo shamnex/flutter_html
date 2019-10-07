@@ -15,7 +15,8 @@ class Html extends StatelessWidget {
     @deprecated this.backgroundColor,
     @deprecated this.defaultTextStyle,
     this.onLinkTap,
-    @deprecated this.renderNewlines = false, //TODO(Sub6Resources): Document alternatives
+    @deprecated this.renderNewlines =
+        false, //TODO(Sub6Resources): Document alternatives
     this.customRender,
     @deprecated this.customEdgeInsets,
     @deprecated this.customTextStyle,
@@ -95,16 +96,17 @@ class Html extends StatelessWidget {
     }
 
     return Container(
-        color: backgroundColor,
-        width: width,
-        child: HtmlParser(
-          htmlData: data,
-          cssData: css,
-          onLinkTap: onLinkTap,
-          style: style,
-          customRender: customRender,
-          blacklistedElements: blacklistedElements,
-        ),
+      color: backgroundColor,
+      width: width,
+      child: HtmlParser(
+        htmlData: data,
+        cssData: css,
+        onLinkTap: onLinkTap,
+        style: style,
+        defaultTextStyle: defaultTextStyle,
+        customRender: customRender,
+        blacklistedElements: blacklistedElements,
+      ),
     );
   }
 }
