@@ -56,6 +56,7 @@ class Style {
   Border border;
   Alignment alignment;
   String markerContent;
+  double lineHeight;
 
   Style({
     this.backgroundColor,
@@ -75,6 +76,7 @@ class Style {
     this.width,
     this.baselineOffset,
     this.before,
+    this.lineHeight,
     this.after,
     this.textDirection,
     this.border,
@@ -93,6 +95,7 @@ class Style {
       fontSize: fontSize,
       fontStyle: fontStyle,
       fontWeight: fontWeight,
+      height: lineHeight,
     );
   }
 
@@ -113,6 +116,7 @@ class Style {
       fontStyle: other.fontStyle,
       fontWeight: other.fontWeight,
       height: other.height,
+
       listStyleType: other.listStyleType,
       padding: other.padding,
       //TODO merge EdgeInsets
@@ -142,6 +146,7 @@ class Style {
       fontSize: child.fontSize ?? fontSize,
       fontStyle: child.fontStyle ?? fontStyle,
       fontWeight: child.fontWeight ?? fontWeight,
+      lineHeight: child.lineHeight ?? lineHeight,
       listStyleType: child.listStyleType ?? listStyleType,
       whiteSpace: child.whiteSpace ?? whiteSpace,
     );
@@ -152,6 +157,7 @@ class Style {
     Color color,
     Display display,
     String fontFamily,
+    double lineHeight,
     double fontSize,
     FontStyle fontStyle,
     FontWeight fontWeight,
@@ -182,6 +188,7 @@ class Style {
       fontWeight: fontWeight ?? this.fontWeight,
       height: height ?? this.height,
       listStyleType: listStyleType ?? this.listStyleType,
+      lineHeight: lineHeight ?? this.lineHeight,
       padding: padding ?? this.padding,
       margin: margin ?? this.margin,
       textDecoration: textDecoration ?? this.textDecoration,
@@ -207,6 +214,7 @@ class Style {
     this.fontSize = textStyle.fontSize;
     this.fontStyle = textStyle.fontStyle;
     this.fontWeight = textStyle.fontWeight;
+    this.lineHeight = textStyle.height;
   }
 }
 
