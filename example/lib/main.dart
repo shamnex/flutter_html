@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/html_parser.dart';
 import 'package:flutter_html/style.dart';
+import 'package:html/dom.dart' as dom;
 
 void main() => runApp(new MyApp());
 
@@ -105,19 +106,22 @@ class _MyHomePageState extends State<MyHomePage> {
 //              backgroundColor: Colors.red,
 //                fontSize: 20,
 //                margin: const EdgeInsets.only(top: 32),
-                    ),
+                        ),
                     "h1, h3, h5": Style(
 //                backgroundColor: Colors.deepPurple,
 //                alignment: Alignment.center,
-                    ),
+                        ),
                     "#whitespace": Style(
                       backgroundColor: Colors.purple,
                     ),
                   },
                   customRender: {
-                    "flutter": (RenderContext context, Widget child, attributes) {
+                    "flutter": (RenderContext context, Widget child,
+                        dom.Node node, attributes) {
                       return FlutterLogo(
-                        style: (attributes['horizontal'] != null)? FlutterLogoStyle.horizontal: FlutterLogoStyle.markOnly,
+                        style: (attributes['horizontal'] != null)
+                            ? FlutterLogoStyle.horizontal
+                            : FlutterLogoStyle.markOnly,
                         textColor: context.style.color,
                         size: context.style.fontSize * 5,
                       );
@@ -133,12 +137,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Expanded(
-                child: SingleChildScrollView(
-                  child: Text(
-                    HtmlParser.cleanTree(HtmlParser.applyCSS(HtmlParser.lexDomTree(HtmlParser.parseHTML(htmlData), [], []), null)).toString(),
-                    style: TextStyle(fontFamily: 'monospace'),
-                  ),
+              child: SingleChildScrollView(
+                child: Text(
+                  HtmlParser.cleanTree(HtmlParser.applyCSS(
+                          HtmlParser.lexDomTree(
+                              HtmlParser.parseHTML(htmlData), [], []),
+                          null))
+                      .toString(),
+                  style: TextStyle(fontFamily: 'monospace'),
                 ),
+              ),
             )
           ],
         ),
