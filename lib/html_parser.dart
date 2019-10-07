@@ -19,6 +19,7 @@ typedef CustomRender = Widget Function(RenderContext context, Widget child,
 class HtmlParser extends StatelessWidget {
   final String htmlData;
   final String cssData;
+  final TextStyle defaultTextStyle;
   final OnLinkTap onLinkTap;
   final Map<String, Style> style;
   final Map<String, CustomRender> customRender;
@@ -29,6 +30,7 @@ class HtmlParser extends StatelessWidget {
     @required this.cssData,
     this.onLinkTap,
     this.style,
+    this.defaultTextStyle,
     this.customRender,
     this.blacklistedElements,
   });
@@ -46,7 +48,8 @@ class HtmlParser extends StatelessWidget {
     StyledElement cleanedTree = cleanTree(cascadedStyledTree);
     InlineSpan parsedTree = parseTree(
       RenderContext(
-          style: Style.fromTextStyle(Theme.of(context).textTheme.body1)),
+          style: Style.fromTextStyle(
+              defaultTextStyle ?? Theme.of(context).textTheme.body1)),
       cleanedTree,
     );
 
