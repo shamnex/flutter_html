@@ -76,12 +76,12 @@ class Style {
     this.width,
     this.baselineOffset,
     this.before,
-    this.lineHeight,
     this.after,
     this.textDirection,
     this.border,
     this.alignment = Alignment.centerLeft, //TODO
     this.markerContent,
+    this.lineHeight,
   });
 
   //TODO: all attributes of TextStyle likely have a CSS attribute and should be supported.
@@ -118,6 +118,7 @@ class Style {
       height: other.height,
 
       listStyleType: other.listStyleType,
+      lineHeight: other.lineHeight,
       padding: other.padding,
       //TODO merge EdgeInsets
       margin: other.margin,
@@ -157,7 +158,6 @@ class Style {
     Color color,
     Display display,
     String fontFamily,
-    double lineHeight,
     double fontSize,
     FontStyle fontStyle,
     FontWeight fontWeight,
@@ -177,6 +177,7 @@ class Style {
     Border border,
     Alignment alignment,
     String markerContent,
+    double lineHeight,
   }) {
     return Style(
       backgroundColor: backgroundColor ?? this.backgroundColor,
@@ -188,7 +189,6 @@ class Style {
       fontWeight: fontWeight ?? this.fontWeight,
       height: height ?? this.height,
       listStyleType: listStyleType ?? this.listStyleType,
-      lineHeight: lineHeight ?? this.lineHeight,
       padding: padding ?? this.padding,
       margin: margin ?? this.margin,
       textDecoration: textDecoration ?? this.textDecoration,
@@ -202,6 +202,7 @@ class Style {
       border: border ?? this.border,
       alignment: alignment ?? this.alignment,
       markerContent: markerContent ?? this.markerContent,
+      lineHeight: lineHeight ?? this.lineHeight,
     );
   }
 
